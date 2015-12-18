@@ -2,9 +2,12 @@ language: node_js
 
 node_js:
   - "0.10"
+  
+build_image: shippable/minv2
 
 addons:
   firefox: "23.0"
+  selenium: "2.43"
 
 services:
   - selenium
@@ -12,3 +15,9 @@ services:
 before_script:
   - "export DISPLAY=:99.0"
   - "/etc/init.d/xvfb start"
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  
+#cache: true
+
+archive: true
